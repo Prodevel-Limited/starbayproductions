@@ -1,23 +1,29 @@
 ---
+import heroVideo from '../../assets/videos/8197843-hd_1920_1080_30fps.mp4';
+
 interface Props {
 	headline?: string;
 	subheadline?: string;
-	videoSrc?: string;
-	posterSrc?: string;
 }
 
 const {
 	headline = "Amplify Vision. Execute Precision.",
 	subheadline = "World-Class Audio & Media Production for High-Impact Events",
-	videoSrc = "/videos/hero-loop.mp4",
-	posterSrc = "/images/hero-poster.jpg"
 } = Astro.props;
 ---
 
 <section class="hero-video" id="hero">
 	<div class="hero-video__background">
-		<!-- Video placeholder - will show poster or solid background -->
-		<div class="hero-video__poster" style={`background-image: url(${posterSrc});`}></div>
+		<video
+			class="hero-video__video"
+			autoplay
+			loop
+			muted
+			playsinline
+			id="hero-video"
+		>
+			<source src={heroVideo} type="video/mp4" />
+		</video>
 		<div class="hero-video__overlay"></div>
 	</div>
 	
@@ -65,15 +71,16 @@ const {
 		z-index: 0;
 	}
 	
-	.hero-video__poster {
+	.hero-video__video {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-size: cover;
-		background-position: center;
-		background-color: rgba(10, 10, 10, 1);
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		transform: translate(-50%, -50%);
+		object-fit: cover;
 		z-index: 0;
 	}
 	
@@ -185,6 +192,19 @@ const {
 </style>
 
 <script>
-	// Placeholder for future video functionality
-	// When video assets are added, implement video playback logic here
+	// Ensure video plays on load
+	document.addEventListener('DOMContentLoaded', () => {
+		const video = document.getElementById('hero-video') as HTMLVideoElement;
+		if (video) {
+			// Attempt to play the video
+			const playPromise = video.play();
+			
+			if (playPromise !== undefined) {
+				playPromise.catch(error => {
+					// Auto-play was prevented, video will play when user interacts
+					console.log('Video autoplay prevented:', error);
+				});
+			}
+		}
+	});
 </script>
