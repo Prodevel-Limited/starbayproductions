@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import ServiceCard from './islands/ServiceCard.svelte';
+
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="service-grid section-large" id="services">
+	<div class="container">
+		<div class="service-grid__header reveal">
+			<span class="text-micro text-sonic">The Six Pillars</span>
+			<h2 class="service-grid__title">Comprehensive Production Solutions</h2>
+			<p class="service-grid__subtitle">
+				From intimate gatherings to international events, we deliver technical excellence 
+				that elevates every moment.
+			</p>
+		</div>
+		
+		<div class="service-grid__grid">
+			{sortedServices.map((service, index) => (
+				<ServiceCard
+					client:visible
+					title={service.data.title}
+					slug={service.data.slug}
+					description={service.data.description}
+					icon={service.data.icon}
+					specs={service.data.specs}
+					category={service.data.category}
+					index={index}
+				/>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.service-grid {
+		background: var(--obsidian);
+		position: relative;
+	}
+	
+	.service-grid__header {
+		text-align: center;
+		max-width: 800px;
+		margin: 0 auto var(--space-16);
+	}
+	
+	.service-grid__header .text-micro {
+		display: block;
+		margin-bottom: var(--space-4);
+	}
+	
+	.service-grid__title {
+		font-size: var(--text-h2);
+		line-height: var(--leading-h2);
+		color: var(--white);
+		margin-bottom: var(--space-6);
+	}
+	
+	.service-grid__subtitle {
+		font-size: var(--text-body-lg);
+		line-height: var(--leading-body-lg);
+		color: var(--white-80);
+	}
+	
+	.service-grid__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: var(--space-6);
+	}
+	
+	@media (max-width: 768px) {
+		.service-grid__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

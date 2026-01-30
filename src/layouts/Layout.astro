@@ -1,23 +1,100 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+import '../styles/animations.css';
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+}
+
+const {
+	title,
+	description = "World-class audio and media production for high-impact events. Starbay Production delivers precision, excellence, and innovation for concerts, corporate events, and international productions.",
+	image = "/og-image.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.site)} />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, Astro.site)} />
+		
+		<!-- Generator -->
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- Preconnect to Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
+		<!-- Title -->
+		<title>{title}</title>
+		
+		<!-- View Transitions -->
+		<ViewTransitions />
 	</head>
 	<body>
 		<slot />
+		
+		<!-- Scroll Reveal Script -->
+		<script>
+			// Intersection Observer for scroll reveals
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+			
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+					}
+				});
+			}, observerOptions);
+			
+			// Observe all elements with .reveal class
+			document.addEventListener('DOMContentLoaded', () => {
+				const revealElements = document.querySelectorAll('.reveal');
+				revealElements.forEach(el => observer.observe(el));
+			});
+			
+			// Navbar scroll effect
+			const navbar = document.querySelector('.navbar-scroll');
+			if (navbar) {
+				window.addEventListener('scroll', () => {
+					if (window.scrollY > 50) {
+						navbar.classList.add('scrolled');
+					} else {
+						navbar.classList.remove('scrolled');
+					}
+				});
+			}
+		</script>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

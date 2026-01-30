@@ -1,0 +1,493 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const coreValues = [
+	{
+		title: 'Excellence',
+		description: 'We pursue the highest standards in sound quality, production delivery, and client experience, ensuring every project reflects global best practices.',
+		icon: '⭐'
+	},
+	{
+		title: 'Innovation',
+		description: 'We embrace modern technology, creative solutions, and continuous improvement to stay ahead in an evolving production industry.',
+		icon: '💡'
+	},
+	{
+		title: 'Integrity',
+		description: 'We operate with honesty, professionalism, and accountability in every partnership and production.',
+		icon: '🤝'
+	},
+	{
+		title: 'Reliability',
+		description: 'We are committed to consistency, precision, and dependable service, delivering flawless execution at every level.',
+		icon: '✓'
+	},
+	{
+		title: 'Collaboration',
+		description: 'We believe great productions are built through strong partnerships, teamwork, and clear communication with our clients.',
+		icon: '👥'
+	},
+	{
+		title: 'Global Mindset',
+		description: 'We approach every project with an international perspective, adapting to diverse cultures, audiences, and production environments.',
+		icon: '🌍'
+	}
+];
+---
+
+<Layout
+	title="About Us | Starbay Production"
+	description="Learn about Starbay Production's mission to deliver world-class audio and media production solutions that elevate experiences and exceed international standards."
+>
+	<Navbar />
+	
+	<!-- About Hero -->
+	<section class="about-hero">
+		<div class="container">
+			<div class="about-hero__content">
+				<span class="text-micro text-sonic animate-fade-in">About Starbay Production</span>
+				<h1 class="about-hero__title animate-fade-in-up">
+					Amplifying Vision Through Sound
+				</h1>
+				<p class="about-hero__description animate-fade-in-up stagger-1">
+					Starbay Production is an internationally driven audio and media production company 
+					delivering world-class sound engineering, live production, and creative media solutions. 
+					With a commitment to excellence and innovation, we partner with brands, organizations, 
+					and ministries to produce exceptional experiences that meet global standards.
+				</p>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Biography -->
+	<section class="about-bio section-large">
+		<div class="container">
+			<div class="about-bio__content reveal">
+				<div class="about-bio__text">
+					<h2 class="about-bio__heading">Our Story</h2>
+					<p>
+						Built on professionalism and innovation, Starbay Production has positioned itself 
+						as a trusted name in audio engineering, live sound production, and media support 
+						for events, brands, and ministries. With a strong foundation in audio engineering 
+						and technical production, we specialize in delivering crystal-clear sound, seamless 
+						event execution, and high-quality media solutions that elevate experiences.
+					</p>
+					<p>
+						From live concerts and worship events to corporate productions and digital content, 
+						we're known for attention to detail, reliability, and world-class standards. Renowned 
+						for precision, reliability, and creative excellence, we provide professional audio 
+						engineering, live event production, and media support across concerts, corporate events, 
+						worship gatherings, conferences, and digital platforms.
+					</p>
+					<p>
+						Driven by passion and creativity, we combine modern technology, industry-grade equipment, 
+						and skilled expertise to ensure every project meets global best practices. Operating with 
+						a global mindset, we serve both local and international clients, delivering seamless 
+						production experiences that transcend borders.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Mission & Vision -->
+	<section class="about-mission section-large">
+		<div class="container">
+			<div class="about-mission__grid">
+				<!-- Mission -->
+				<div class="about-mission__card reveal">
+					<div class="about-mission__icon">🎯</div>
+					<h2 class="about-mission__label text-micro text-sonic">Mission Statement</h2>
+					<p class="about-mission__text">
+						To deliver world-class audio and media production solutions that elevate experiences, 
+						amplify messages, and consistently exceed international standards of excellence.
+					</p>
+				</div>
+				
+				<!-- Vision -->
+				<div class="about-mission__card reveal">
+					<div class="about-mission__icon">🔭</div>
+					<h2 class="about-mission__label text-micro text-gold">Vision Statement</h2>
+					<p class="about-mission__text">
+						To become a globally recognized production brand known for innovation, technical 
+						excellence, and impactful storytelling through sound and media.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Core Values -->
+	<section class="about-values section-large">
+		<div class="container">
+			<div class="about-values__header reveal">
+				<h2 class="about-values__title">Core Values</h2>
+				<p class="about-values__subtitle">
+					The principles that guide every production, partnership, and performance
+				</p>
+			</div>
+			
+			<div class="about-values__grid">
+				{coreValues.map((value, index) => (
+					<div class="about-values__card reveal" style={`animation-delay: ${index * 0.1}s;`}>
+						<div class="about-values__icon">{value.icon}</div>
+						<h3 class="about-values__name">{value.title}</h3>
+						<p class="about-values__description">{value.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+	
+	<!-- Philosophy -->
+	<section class="about-philosophy section-large">
+		<div class="container">
+			<div class="about-philosophy__content reveal">
+				<h2 class="about-philosophy__title">Our Philosophy</h2>
+				<div class="about-philosophy__grid">
+					<div class="about-philosophy__principle">
+						<h3 class="text-sonic">Technical Excellence</h3>
+						<p>
+							We believe that exceptional audio is both art and science. Our engineers combine 
+							technical precision with creative intuition, ensuring that every frequency, every 
+							dynamic, and every moment is optimized for maximum impact.
+						</p>
+					</div>
+					<div class="about-philosophy__principle">
+						<h3 class="text-gold">Client Partnership</h3>
+						<p>
+							Your vision becomes our mission. We don't just provide services; we partner with 
+							you to understand your goals, challenges, and audience, delivering solutions that 
+							align perfectly with your objectives.
+						</p>
+					</div>
+					<div class="about-philosophy__principle">
+						<h3 class="text-sonic">Global Standards</h3>
+						<p>
+							Whether producing in Lagos or London, we apply the same rigorous international 
+							standards. Our team stays current with global best practices, ensuring your 
+							production meets world-class expectations.
+						</p>
+					</div>
+					<div class="about-philosophy__principle">
+						<h3 class="text-gold">Invisible Excellence</h3>
+						<p>
+							The best technical production is invisible—audiences should experience the content, 
+							not the technology. We take pride in creating flawless execution that allows your 
+							message to shine.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- CTA -->
+	<section class="about-cta section">
+		<div class="container">
+			<div class="about-cta__box">
+				<h2 class="about-cta__title">Ready to Work Together?</h2>
+				<p class="about-cta__text">
+					Experience the difference that world-class production can make. Let's discuss your 
+					next project and how we can help you achieve exceptional results.
+				</p>
+				<div class="about-cta__actions">
+					<a href="/#lead-console" class="btn btn-primary btn-lg">Request Proposal</a>
+					<a href="/#services" class="btn btn-ghost">Explore Services</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<Footer />
+</Layout>
+
+<style>
+	/* About Hero */
+	.about-hero {
+		padding: calc(var(--space-20) + 80px) 0 var(--space-20);
+		background: linear-gradient(
+			135deg,
+			rgba(10, 10, 10, 1) 0%,
+			rgba(20, 20, 20, 1) 100%
+		);
+		position: relative;
+	}
+	
+	.about-hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(
+			circle at 50% 0%,
+			rgba(0, 240, 255, 0.05) 0%,
+			transparent 50%
+		);
+		pointer-events: none;
+	}
+	
+	.about-hero__content {
+		max-width: 900px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	.about-hero__content .text-micro {
+		display: block;
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-hero__title {
+		font-size: var(--text-h1);
+		line-height: var(--leading-h1);
+		color: var(--white);
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-hero__description {
+		font-size: var(--text-body-lg);
+		line-height: 1.8;
+		color: var(--white-80);
+	}
+	
+	/* Biography */
+	.about-bio {
+		background: var(--obsidian);
+	}
+	
+	.about-bio__content {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	
+	.about-bio__text h2 {
+		font-size: var(--text-h2);
+		color: var(--sonic-electric);
+		margin-bottom: var(--space-8);
+	}
+	
+	.about-bio__text p {
+		font-size: var(--text-body-lg);
+		line-height: 1.8;
+		color: var(--white-80);
+		margin-bottom: var(--space-6);
+	}
+	
+	/* Mission & Vision */
+	.about-mission {
+		background: linear-gradient(
+			135deg,
+			rgba(20, 20, 20, 1) 0%,
+			rgba(10, 10, 10, 1) 100%
+		);
+	}
+	
+	.about-mission__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: var(--space-8);
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+	
+	.about-mission__card {
+		padding: var(--space-12);
+		background: linear-gradient(
+			135deg,
+			rgba(30, 30, 30, 0.5) 0%,
+			rgba(20, 20, 20, 0.8) 100%
+		);
+		border: var(--border-thin) solid rgba(0, 240, 255, 0.2);
+		border-radius: var(--space-3);
+		text-align: center;
+		transition: all var(--transition-base) var(--ease-fader);
+	}
+	
+	.about-mission__card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-glow);
+	}
+	
+	.about-mission__icon {
+		font-size: 4rem;
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-mission__label {
+		display: block;
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-mission__text {
+		font-size: var(--text-body-lg);
+		line-height: 1.8;
+		color: var(--white);
+	}
+	
+	/* Core Values */
+	.about-values {
+		background: var(--obsidian);
+	}
+	
+	.about-values__header {
+		text-align: center;
+		max-width: 700px;
+		margin: 0 auto var(--space-16);
+	}
+	
+	.about-values__title {
+		font-size: var(--text-h2);
+		color: var(--white);
+		margin-bottom: var(--space-4);
+	}
+	
+	.about-values__subtitle {
+		font-size: var(--text-body-lg);
+		color: var(--white-80);
+	}
+	
+	.about-values__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--space-6);
+	}
+	
+	.about-values__card {
+		padding: var(--space-8);
+		background: rgba(20, 20, 20, 0.5);
+		border: var(--border-hairline) solid rgba(212, 175, 55, 0.2);
+		border-radius: var(--space-3);
+		transition: all var(--transition-base) var(--ease-fader);
+	}
+	
+	.about-values__card:hover {
+		background: rgba(212, 175, 55, 0.05);
+		border-color: var(--lucid-gold);
+		transform: translateY(-2px);
+	}
+	
+	.about-values__icon {
+		font-size: 3rem;
+		margin-bottom: var(--space-4);
+	}
+	
+	.about-values__name {
+		font-family: var(--font-display);
+		font-size: var(--text-h3);
+		color: var(--white);
+		margin-bottom: var(--space-4);
+	}
+	
+	.about-values__description {
+		font-size: var(--text-body);
+		line-height: var(--leading-body);
+		color: var(--white-80);
+	}
+	
+	/* Philosophy */
+	.about-philosophy {
+		background: linear-gradient(
+			135deg,
+			rgba(20, 20, 20, 1) 0%,
+			rgba(10, 10, 10, 1) 100%
+		);
+	}
+	
+	.about-philosophy__content {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+	
+	.about-philosophy__title {
+		font-size: var(--text-h2);
+		color: var(--white);
+		text-align: center;
+		margin-bottom: var(--space-12);
+	}
+	
+	.about-philosophy__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: var(--space-8);
+	}
+	
+	.about-philosophy__principle {
+		padding: var(--space-8);
+		background: rgba(30, 30, 30, 0.5);
+		border: var(--border-hairline) solid rgba(0, 240, 255, 0.1);
+		border-radius: var(--space-3);
+	}
+	
+	.about-philosophy__principle h3 {
+		font-family: var(--font-display);
+		font-size: 1.5rem;
+		margin-bottom: var(--space-4);
+	}
+	
+	.about-philosophy__principle p {
+		font-size: var(--text-body);
+		line-height: var(--leading-body);
+		color: var(--white-80);
+	}
+	
+	/* CTA */
+	.about-cta {
+		background: var(--obsidian);
+	}
+	
+	.about-cta__box {
+		max-width: 800px;
+		margin: 0 auto;
+		text-align: center;
+		padding: var(--space-16);
+		background: linear-gradient(
+			135deg,
+			rgba(0, 240, 255, 0.05) 0%,
+			rgba(10, 10, 10, 0.5) 100%
+		);
+		border: var(--border-thin) solid var(--sonic-electric);
+		border-radius: var(--space-3);
+	}
+	
+	.about-cta__title {
+		font-size: var(--text-h2);
+		color: var(--white);
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-cta__text {
+		font-size: var(--text-body-lg);
+		color: var(--white-80);
+		line-height: var(--leading-body-lg);
+		margin-bottom: var(--space-8);
+	}
+	
+	.about-cta__actions {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	@media (max-width: 768px) {
+		.about-mission__grid,
+		.about-philosophy__grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.about-cta__actions {
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.about-cta__actions .btn {
+			width: 100%;
+			max-width: 300px;
+		}
+	}
+</style>

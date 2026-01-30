@@ -1,0 +1,470 @@
+---
+// LeadForm with Formspree integration
+// Replace YOUR_FORMSPREE_ID with actual Formspree form ID
+const formspreeId = "YOUR_FORMSPREE_ID";
+---
+
+<section class="lead-form section-large" id="lead-console">
+	<div class="container">
+		<div class="lead-form__header reveal">
+			<span class="text-micro text-gold">Request for Proposal</span>
+			<h2 class="lead-form__title">The Lead Console</h2>
+			<p class="lead-form__subtitle">
+				Initiate your production consultation. Our team responds within 24 hours with 
+				a tailored proposal and technical recommendations.
+			</p>
+		</div>
+		
+		<form
+			class="lead-form__form reveal"
+			action={`https://formspree.io/f/${formspreeId}`}
+			method="POST"
+			id="consultation-form"
+		>
+			<div class="lead-form__grid">
+				<!-- Name Field -->
+				<div class="lead-form__field">
+					<label for="name" class="lead-form__label">
+						Full Name <span class="lead-form__required">*</span>
+					</label>
+					<input
+						type="text"
+						id="name"
+						name="name"
+						class="lead-form__input"
+						required
+						placeholder="John Doe"
+					/>
+				</div>
+				
+				<!-- Organization Field -->
+				<div class="lead-form__field">
+					<label for="organization" class="lead-form__label">
+						Organization <span class="lead-form__required">*</span>
+					</label>
+					<input
+						type="text"
+						id="organization"
+						name="organization"
+						class="lead-form__input"
+						required
+						placeholder="Your Company Name"
+					/>
+				</div>
+				
+				<!-- Email Field -->
+				<div class="lead-form__field">
+					<label for="email" class="lead-form__label">
+						Email Address <span class="lead-form__required">*</span>
+					</label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						class="lead-form__input"
+						required
+						placeholder="john@company.com"
+					/>
+				</div>
+				
+				<!-- Phone Field -->
+				<div class="lead-form__field">
+					<label for="phone" class="lead-form__label">
+						Phone Number
+					</label>
+					<input
+						type="tel"
+						id="phone"
+						name="phone"
+						class="lead-form__input"
+						placeholder="+1 (555) 123-4567"
+					/>
+				</div>
+				
+				<!-- Event Type Field -->
+				<div class="lead-form__field">
+					<label for="event-type" class="lead-form__label">
+						Event Type <span class="lead-form__required">*</span>
+					</label>
+					<select
+						id="event-type"
+						name="event-type"
+						class="lead-form__input lead-form__select"
+						required
+					>
+						<option value="">Select Event Type</option>
+						<option value="concert">Concert / Music Event</option>
+						<option value="worship">Worship Service / Conference</option>
+						<option value="corporate">Corporate Event</option>
+						<option value="conference">Conference / Summit</option>
+						<option value="media">Media Production</option>
+						<option value="international">International Tour</option>
+						<option value="other">Other</option>
+					</select>
+				</div>
+				
+				<!-- Event Scale Field -->
+				<div class="lead-form__field">
+					<label for="event-scale" class="lead-form__label">
+						Expected Attendance <span class="lead-form__required">*</span>
+					</label>
+					<select
+						id="event-scale"
+						name="event-scale"
+						class="lead-form__input lead-form__select"
+						required
+					>
+						<option value="">Select Scale</option>
+						<option value="small">Under 100</option>
+						<option value="medium">100 - 500</option>
+						<option value="large">500 - 2,000</option>
+						<option value="very-large">2,000 - 10,000</option>
+						<option value="massive">10,000+</option>
+					</select>
+				</div>
+				
+				<!-- Timeline Field -->
+				<div class="lead-form__field">
+					<label for="timeline" class="lead-form__label">
+						Event Date / Timeline <span class="lead-form__required">*</span>
+					</label>
+					<input
+						type="text"
+						id="timeline"
+						name="timeline"
+						class="lead-form__input"
+						required
+						placeholder="e.g., March 2026 or 3-6 months"
+					/>
+				</div>
+				
+				<!-- Budget Range Field -->
+				<div class="lead-form__field">
+					<label for="budget" class="lead-form__label">
+						Budget Range
+					</label>
+					<select
+						id="budget"
+						name="budget"
+						class="lead-form__input lead-form__select"
+					>
+						<option value="">Prefer not to disclose</option>
+						<option value="under-5k">Under $5,000</option>
+						<option value="5k-15k">$5,000 - $15,000</option>
+						<option value="15k-50k">$15,000 - $50,000</option>
+						<option value="50k-100k">$50,000 - $100,000</option>
+						<option value="100k-plus">$100,000+</option>
+					</select>
+				</div>
+				
+				<!-- Project Details Field (Full Width) -->
+				<div class="lead-form__field lead-form__field--full">
+					<label for="details" class="lead-form__label">
+						Project Details <span class="lead-form__required">*</span>
+					</label>
+					<textarea
+						id="details"
+						name="details"
+						class="lead-form__input lead-form__textarea"
+						required
+						rows="6"
+						placeholder="Tell us about your event, technical requirements, venue details, and any specific needs..."
+					></textarea>
+				</div>
+			</div>
+			
+			<!-- Submit Section -->
+			<div class="lead-form__submit">
+				<button type="submit" class="btn btn-primary btn-lg">
+					Initialize Consultation
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M5 10h10M10 5l5 5-5 5"/>
+					</svg>
+				</button>
+				<p class="lead-form__note text-mono">
+					We respond within 24 hours. All consultations are confidential.
+				</p>
+			</div>
+		</form>
+		
+		<!-- Success Message -->
+		<div class="lead-form__success" id="form-success" style="display: none;">
+			<div class="lead-form__success-content">
+				<div class="lead-form__success-icon">✓</div>
+				<h3 class="lead-form__success-title">Consultation Request Received</h3>
+				<p class="lead-form__success-text">
+					Thank you for reaching out. Our production team will review your requirements 
+					and respond within 24 hours with a detailed proposal.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.lead-form {
+		background: linear-gradient(
+			135deg,
+			rgba(10, 10, 10, 1) 0%,
+			rgba(20, 20, 20, 1) 50%,
+			rgba(10, 10, 10, 1) 100%
+		);
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.lead-form::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			to right,
+			transparent 0%,
+			var(--lucid-gold) 50%,
+			transparent 100%
+		);
+		opacity: 0.3;
+	}
+	
+	.lead-form__header {
+		text-align: center;
+		max-width: 800px;
+		margin: 0 auto var(--space-16);
+	}
+	
+	.lead-form__header .text-micro {
+		display: block;
+		margin-bottom: var(--space-4);
+	}
+	
+	.lead-form__title {
+		font-family: var(--font-display);
+		font-size: var(--text-h2);
+		line-height: var(--leading-h2);
+		color: var(--white);
+		margin-bottom: var(--space-6);
+	}
+	
+	.lead-form__subtitle {
+		font-size: var(--text-body-lg);
+		line-height: var(--leading-body-lg);
+		color: var(--white-80);
+	}
+	
+	.lead-form__form {
+		max-width: 900px;
+		margin: 0 auto;
+		background: linear-gradient(
+			135deg,
+			rgba(30, 30, 30, 0.5) 0%,
+			rgba(20, 20, 20, 0.8) 100%
+		);
+		border: var(--border-thin) solid rgba(212, 175, 55, 0.2);
+		border-radius: var(--space-3);
+		padding: var(--space-12);
+	}
+	
+	.lead-form__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--space-6);
+		margin-bottom: var(--space-8);
+	}
+	
+	.lead-form__field {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+	
+	.lead-form__field--full {
+		grid-column: 1 / -1;
+	}
+	
+	.lead-form__label {
+		font-family: var(--font-body);
+		font-size: var(--text-mono);
+		font-weight: 600;
+		color: var(--white);
+		text-transform: uppercase;
+		letter-spacing: var(--tracking-wide);
+	}
+	
+	.lead-form__required {
+		color: var(--sonic-electric);
+	}
+	
+	.lead-form__input,
+	.lead-form__textarea,
+	.lead-form__select {
+		font-family: var(--font-body);
+		font-size: var(--text-body);
+		padding: var(--space-4);
+		background: rgba(10, 10, 10, 0.8);
+		border: var(--border-hairline) solid rgba(112, 112, 112, 0.3);
+		border-radius: var(--space-2);
+		color: var(--white);
+		transition: all var(--transition-base) var(--ease-fader);
+	}
+	
+	.lead-form__input:focus,
+	.lead-form__textarea:focus,
+	.lead-form__select:focus {
+		outline: none;
+		border-color: var(--sonic-electric);
+		box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.1);
+	}
+	
+	.lead-form__input::placeholder,
+	.lead-form__textarea::placeholder {
+		color: var(--slate-grey);
+	}
+	
+	.lead-form__textarea {
+		resize: vertical;
+		min-height: 150px;
+		font-family: var(--font-body);
+	}
+	
+	.lead-form__select {
+		cursor: pointer;
+	}
+	
+	.lead-form__submit {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-4);
+		padding-top: var(--space-8);
+		border-top: var(--border-hairline) solid rgba(112, 112, 112, 0.2);
+	}
+	
+	.btn-lg {
+		padding: var(--space-5) var(--space-12);
+		font-size: var(--text-body-lg);
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
+	}
+	
+	.btn-lg svg {
+		transition: transform var(--transition-base) var(--ease-fader);
+	}
+	
+	.btn-lg:hover svg {
+		transform: translateX(4px);
+	}
+	
+	.lead-form__note {
+		color: var(--slate-grey);
+		font-size: var(--text-mono);
+		text-align: center;
+	}
+	
+	.lead-form__success {
+		max-width: 600px;
+		margin: 0 auto;
+		text-align: center;
+		padding: var(--space-12);
+		background: linear-gradient(
+			135deg,
+			rgba(0, 240, 255, 0.1) 0%,
+			rgba(10, 10, 10, 0.9) 100%
+		);
+		border: var(--border-thin) solid var(--sonic-electric);
+		border-radius: var(--space-3);
+		animation: fadeInScale 0.5s var(--ease-fader);
+	}
+	
+	@keyframes fadeInScale {
+		from {
+			opacity: 0;
+			transform: scale(0.9);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	
+	.lead-form__success-icon {
+		width: 80px;
+		height: 80px;
+		margin: 0 auto var(--space-6);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 3rem;
+		color: var(--sonic-electric);
+		border: var(--border-medium) solid var(--sonic-electric);
+		border-radius: 50%;
+		animation: pulseGlow 2s ease-in-out infinite;
+	}
+	
+	.lead-form__success-title {
+		font-family: var(--font-display);
+		font-size: var(--text-h3);
+		color: var(--white);
+		margin-bottom: var(--space-4);
+	}
+	
+	.lead-form__success-text {
+		font-size: var(--text-body-lg);
+		color: var(--white-80);
+		line-height: var(--leading-body-lg);
+	}
+	
+	@media (max-width: 768px) {
+		.lead-form__form {
+			padding: var(--space-8);
+		}
+		
+		.lead-form__grid {
+			grid-template-columns: 1fr;
+			gap: var(--space-4);
+		}
+		
+		.btn-lg {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+</style>
+
+<script>
+	// Form submission handling
+	const form = document.getElementById('consultation-form') as HTMLFormElement;
+	const successMessage = document.getElementById('form-success');
+	
+	if (form) {
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			
+			const formData = new FormData(form);
+			
+			try {
+				const response = await fetch(form.action, {
+					method: 'POST',
+					body: formData,
+					headers: {
+						'Accept': 'application/json'
+					}
+				});
+				
+				if (response.ok) {
+					form.style.display = 'none';
+					if (successMessage) {
+						successMessage.style.display = 'block';
+					}
+				} else {
+					alert('There was a problem submitting your request. Please try again or contact us directly.');
+				}
+			} catch (error) {
+				alert('There was a problem submitting your request. Please try again or contact us directly.');
+			}
+		});
+	}
+</script>

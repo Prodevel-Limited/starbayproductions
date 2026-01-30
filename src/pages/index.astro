@@ -1,11 +1,77 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import HeroVideo from '../components/islands/HeroVideo.astro';
+import ImpactStats from '../components/islands/ImpactStats.svelte';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import StoriesSlider from '../components/islands/StoriesSlider';
+import GlobalMap from '../components/islands/GlobalMap.svelte';
+import LeadForm from '../components/LeadForm.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Get content collections
+const stories = await getCollection('stories');
+
+// Format stories for the slider component
+const formattedStories = stories.map(story => ({
+	title: story.data.title,
+	client: story.data.client,
+	eventType: story.data.eventType,
+	location: story.data.location,
+	quote: story.data.quote,
+	impact: story.data.impact,
+	image: story.data.image
+}));
+
+// Impact stats data
+const impactStats = [
+	{ value: 500, suffix: '+', label: 'Global Events Delivered', prefix: '' },
+	{ value: 120, suffix: 'dB', label: 'Crystal Clear Sound', prefix: '' },
+	{ value: 25, suffix: '+', label: 'International Markets', prefix: '' }
+];
+
+// Global map locations
+const globalLocations = [
+	{ name: 'Lagos', country: 'Nigeria', x: 50, y: 52, events: 150 },
+	{ name: 'Accra', country: 'Ghana', x: 48, y: 54, events: 85 },
+	{ name: 'London', country: 'United Kingdom', x: 49, y: 38, events: 42 },
+	{ name: 'New York', country: 'USA', x: 25, y: 40, events: 38 },
+	{ name: 'Dubai', country: 'UAE', x: 62, y: 48, events: 28 },
+	{ name: 'Johannesburg', country: 'South Africa', x: 55, y: 68, events: 45 }
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="Starbay Production | World-Class Audio & Media Production"
+	description="International audio engineering and media production for high-impact events. Delivering precision, excellence, and innovation for concerts, corporate events, and global productions."
+>
+	<Navbar />
+	
+	<!-- Hero Section -->
+	<HeroVideo
+		headline="Amplify Vision. Execute Precision."
+		subheadline="World-Class Audio & Media Production for High-Impact Events"
+	/>
+	
+	<!-- Impact Stats -->
+	<ImpactStats client:visible stats={impactStats} />
+	
+	<!-- Service Grid -->
+	<ServiceGrid />
+	
+	<!-- Success Stories -->
+	<div id="stories">
+		<StoriesSlider client:only="react" stories={formattedStories} />
+	</div>
+	
+	<!-- Global Operations Map -->
+	<div id="global">
+		<GlobalMap client:visible locations={globalLocations} />
+	</div>
+	
+	<!-- Lead Form -->
+	<LeadForm />
+	
+	<Footer />
 </Layout>

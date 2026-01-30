@@ -1,0 +1,415 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+	const services = await getCollection('services');
+	return services.map(service => ({
+		params: { slug: service.data.slug },
+		props: { service },
+	}));
+}
+
+const { service } = Astro.props;
+const { Content } = await service.render();
+---
+
+<Layout
+	title={`${service.data.title} | Starbay Production`}
+	description={service.data.description}
+>
+	<Navbar />
+	
+	<!-- Service Hero -->
+	<section class="service-hero">
+		<div class="container">
+			<div class="service-hero__breadcrumb text-micro">
+				<a href="/">Home</a>
+				<span>/</span>
+				<a href="/#services">Services</a>
+				<span>/</span>
+				<span class="text-sonic">{service.data.title}</span>
+			</div>
+			
+			<div class="service-hero__content">
+				<div class="service-hero__icon">{service.data.icon}</div>
+				<span class="service-hero__category text-micro text-gold">{service.data.category}</span>
+				<h1 class="service-hero__title animate-fade-in-up">
+					{service.data.title}
+				</h1>
+				<p class="service-hero__description animate-fade-in-up stagger-1">
+					{service.data.description}
+				</p>
+				
+				<div class="service-hero__cta animate-fade-in-up stagger-2">
+					<a href="/#lead-console" class="btn btn-primary">Request Proposal</a>
+					<a href="#service-specs" class="btn btn-ghost">View Specifications</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Service Specs -->
+	<section class="service-specs section" id="service-specs">
+		<div class="container">
+			<div class="service-specs__header reveal">
+				<h2 class="service-specs__title">Technical Specifications</h2>
+				<p class="service-specs__subtitle">
+					What we deliver for {service.data.title}
+				</p>
+			</div>
+			
+			<div class="service-specs__grid">
+				{service.data.specs.map((spec, index) => (
+					<div class="service-specs__item reveal" style={`animation-delay: ${index * 0.1}s;`}>
+						<div class="service-specs__icon">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<polyline points="20 6 9 17 4 12"/>
+							</svg>
+						</div>
+						<span class="service-specs__text">{spec}</span>
+					</div>
+				))}
+			</div>
+			
+			{service.data.equipment && service.data.equipment.length > 0 && (
+				<div class="service-specs__equipment">
+					<h3 class="service-specs__equipment-title text-mono">
+						<span class="text-sonic">Equipment & Technology</span>
+					</h3>
+					<div class="service-specs__equipment-grid">
+						{service.data.equipment.map((item, index) => (
+							<div class="service-specs__equipment-item" style={`animation-delay: ${index * 0.1}s;`}>
+								{item}
+							</div>
+						))}
+					</div>
+				</div>
+			)}
+		</div>
+	</section>
+	
+	<!-- Service Content -->
+	<section class="service-content section-large">
+		<div class="container">
+			<article class="service-content__article prose">
+				<Content />
+			</article>
+		</div>
+	</section>
+	
+	<!-- CTA Section -->
+	<section class="service-cta section">
+		<div class="container">
+			<div class="service-cta__box">
+				<h2 class="service-cta__title">Ready to Elevate Your Event?</h2>
+				<p class="service-cta__text">
+					Let's discuss how our {service.data.title} can transform your next project. 
+					Request a detailed proposal and technical consultation.
+				</p>
+				<div class="service-cta__actions">
+					<a href="/#lead-console" class="btn btn-primary btn-lg">Request Proposal</a>
+					<a href="/#services" class="btn btn-ghost">Explore All Services</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<Footer />
+</Layout>
+
+<style>
+	/* Service Hero */
+	.service-hero {
+		padding: calc(var(--space-20) + 80px) 0 var(--space-20);
+		background: linear-gradient(
+			135deg,
+			rgba(10, 10, 10, 1) 0%,
+			rgba(20, 20, 20, 1) 100%
+		);
+		position: relative;
+	}
+	
+	.service-hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(
+			circle at 50% 0%,
+			rgba(0, 240, 255, 0.05) 0%,
+			transparent 50%
+		);
+		pointer-events: none;
+	}
+	
+	.service-hero__breadcrumb {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		margin-bottom: var(--space-8);
+		color: var(--slate-grey);
+	}
+	
+	.service-hero__breadcrumb a {
+		color: var(--slate-grey);
+		text-decoration: none;
+		transition: color var(--transition-base) var(--ease-fader);
+	}
+	
+	.service-hero__breadcrumb a:hover {
+		color: var(--sonic-electric);
+	}
+	
+	.service-hero__content {
+		max-width: 800px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	.service-hero__icon {
+		font-size: 5rem;
+		margin-bottom: var(--space-4);
+		display: block;
+	}
+	
+	.service-hero__category {
+		display: block;
+		margin-bottom: var(--space-4);
+	}
+	
+	.service-hero__title {
+		font-size: var(--text-h1);
+		line-height: var(--leading-h1);
+		color: var(--white);
+		margin-bottom: var(--space-6);
+	}
+	
+	.service-hero__description {
+		font-size: var(--text-body-lg);
+		line-height: var(--leading-body-lg);
+		color: var(--white-80);
+		margin-bottom: var(--space-12);
+	}
+	
+	.service-hero__cta {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	/* Service Specs */
+	.service-specs {
+		background: var(--obsidian);
+	}
+	
+	.service-specs__header {
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto var(--space-12);
+	}
+	
+	.service-specs__title {
+		font-size: var(--text-h2);
+		color: var(--white);
+		margin-bottom: var(--space-4);
+	}
+	
+	.service-specs__subtitle {
+		font-size: var(--text-body-lg);
+		color: var(--white-80);
+	}
+	
+	.service-specs__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--space-4);
+		margin-bottom: var(--space-16);
+	}
+	
+	.service-specs__item {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--space-4);
+		padding: var(--space-6);
+		background: rgba(20, 20, 20, 0.5);
+		border: var(--border-hairline) solid rgba(0, 240, 255, 0.2);
+		border-radius: var(--space-2);
+		transition: all var(--transition-base) var(--ease-fader);
+	}
+	
+	.service-specs__item:hover {
+		background: rgba(0, 240, 255, 0.05);
+		border-color: var(--sonic-electric);
+		transform: translateY(-2px);
+	}
+	
+	.service-specs__icon {
+		flex-shrink: 0;
+		width: 32px;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(0, 240, 255, 0.1);
+		border-radius: 50%;
+		color: var(--sonic-electric);
+	}
+	
+	.service-specs__text {
+		font-size: var(--text-body);
+		line-height: var(--leading-body);
+		color: var(--white);
+		font-weight: 500;
+	}
+	
+	/* Equipment Section */
+	.service-specs__equipment {
+		background: linear-gradient(
+			135deg,
+			rgba(30, 30, 30, 0.5) 0%,
+			rgba(20, 20, 20, 0.8) 100%
+		);
+		border: var(--border-hairline) solid rgba(212, 175, 55, 0.2);
+		border-radius: var(--space-3);
+		padding: var(--space-12);
+	}
+	
+	.service-specs__equipment-title {
+		text-align: center;
+		margin-bottom: var(--space-8);
+	}
+	
+	.service-specs__equipment-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: var(--space-4);
+	}
+	
+	.service-specs__equipment-item {
+		font-family: var(--font-mono);
+		font-size: var(--text-mono);
+		color: var(--white-80);
+		padding: var(--space-4);
+		background: rgba(10, 10, 10, 0.5);
+		border: var(--border-hairline) solid rgba(112, 112, 112, 0.2);
+		border-radius: var(--space-2);
+		text-align: center;
+	}
+	
+	/* Service Content */
+	.service-content {
+		background: var(--obsidian);
+	}
+	
+	.service-content__article {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	/* Prose Styles */
+	.prose {
+		color: var(--white-80);
+		font-size: var(--text-body-lg);
+		line-height: 1.8;
+	}
+	
+	.prose :global(h2) {
+		font-family: var(--font-display);
+		font-size: var(--text-h2);
+		color: var(--white);
+		margin: var(--space-12) 0 var(--space-6);
+	}
+	
+	.prose :global(h3) {
+		font-family: var(--font-display);
+		font-size: var(--text-h3);
+		color: var(--sonic-electric);
+		margin: var(--space-8) 0 var(--space-4);
+	}
+	
+	.prose :global(p) {
+		margin-bottom: var(--space-6);
+	}
+	
+	.prose :global(ul),
+	.prose :global(ol) {
+		margin: var(--space-6) 0;
+		padding-left: var(--space-8);
+	}
+	
+	.prose :global(li) {
+		margin-bottom: var(--space-3);
+	}
+	
+	.prose :global(strong) {
+		color: var(--white);
+		font-weight: 600;
+	}
+	
+	/* Service CTA */
+	.service-cta {
+		background: linear-gradient(
+			135deg,
+			rgba(20, 20, 20, 1) 0%,
+			rgba(10, 10, 10, 1) 100%
+		);
+	}
+	
+	.service-cta__box {
+		max-width: 800px;
+		margin: 0 auto;
+		text-align: center;
+		padding: var(--space-16);
+		background: linear-gradient(
+			135deg,
+			rgba(0, 240, 255, 0.05) 0%,
+			rgba(10, 10, 10, 0.5) 100%
+		);
+		border: var(--border-thin) solid var(--sonic-electric);
+		border-radius: var(--space-3);
+	}
+	
+	.service-cta__title {
+		font-size: var(--text-h2);
+		color: var(--white);
+		margin-bottom: var(--space-6);
+	}
+	
+	.service-cta__text {
+		font-size: var(--text-body-lg);
+		color: var(--white-80);
+		line-height: var(--leading-body-lg);
+		margin-bottom: var(--space-8);
+	}
+	
+	.service-cta__actions {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	@media (max-width: 768px) {
+		.service-hero__cta,
+		.service-cta__actions {
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.service-hero__cta .btn,
+		.service-cta__actions .btn {
+			width: 100%;
+			max-width: 300px;
+		}
+		
+		.service-specs__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

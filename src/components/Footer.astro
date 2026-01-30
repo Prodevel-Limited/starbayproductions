@@ -1,0 +1,355 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/staybar_logo.jpeg';
+
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+	services: [
+		{ name: 'Audio Engineering', href: '/services/audio-engineering' },
+		{ name: 'Concert Production', href: '/services/concerts-worship' },
+		{ name: 'Corporate Events', href: '/services/corporate-events' },
+		{ name: 'Media Production', href: '/services/media-production' },
+		{ name: 'Technical Consultancy', href: '/services/technical-consultancy' },
+		{ name: 'International Support', href: '/services/international-support' },
+	],
+	company: [
+		{ name: 'About Us', href: '/about' },
+		{ name: 'Success Stories', href: '/#stories' },
+		{ name: 'Global Operations', href: '/#global' },
+		{ name: 'Request Proposal', href: '/#lead-console' },
+	],
+};
+---
+
+<footer class="footer">
+	<div class="container-wide">
+		<!-- Main Footer Content -->
+		<div class="footer__main">
+			<!-- Brand Column -->
+			<div class="footer__brand">
+				<a href="/" class="footer__logo">
+					<Image
+						src={logo}
+						alt="Starbay Production Logo"
+						class="footer__logo-image"
+						width={200}
+						height={80}
+					/>
+				</a>
+				<p class="footer__tagline">
+					Amplify Vision. Execute Precision.
+				</p>
+				<p class="footer__description">
+					World-class audio and media production for high-impact events. 
+					Delivering excellence across continents since inception.
+				</p>
+				
+				<!-- Social Links -->
+				<div class="footer__social">
+					<a href="#" class="footer__social-link" aria-label="Facebook">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+						</svg>
+					</a>
+					<a href="#" class="footer__social-link" aria-label="Instagram">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+							<path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+						</svg>
+					</a>
+					<a href="#" class="footer__social-link" aria-label="LinkedIn">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+							<circle cx="4" cy="4" r="2"/>
+						</svg>
+					</a>
+					<a href="#" class="footer__social-link" aria-label="YouTube">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/>
+							<polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+			
+			<!-- Services Column -->
+			<div class="footer__column">
+				<h3 class="footer__heading">Services</h3>
+				<ul class="footer__list">
+					{footerLinks.services.map(link => (
+						<li>
+							<a href={link.href} class="footer__link">
+								{link.name}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+			
+			<!-- Company Column -->
+			<div class="footer__column">
+				<h3 class="footer__heading">Company</h3>
+				<ul class="footer__list">
+					{footerLinks.company.map(link => (
+						<li>
+							<a href={link.href} class="footer__link">
+								{link.name}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+			
+			<!-- Contact Column -->
+			<div class="footer__column">
+				<h3 class="footer__heading">Get in Touch</h3>
+				<ul class="footer__list">
+					<li>
+						<a href="mailto:hello@starbayproductions.com" class="footer__link">
+							hello@starbayproductions.com
+						</a>
+					</li>
+					<li>
+						<a href="tel:+1234567890" class="footer__link">
+							+1 (234) 567-890
+						</a>
+					</li>
+					<li class="footer__address">
+						International Production Services<br />
+						Available Globally
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- Footer Bottom -->
+		<div class="footer__bottom">
+			<div class="footer__bottom-content">
+				<p class="footer__copyright">
+					© {currentYear} Starbay Production. All rights reserved.
+				</p>
+				<div class="footer__legal">
+					<a href="/privacy" class="footer__legal-link">Privacy Policy</a>
+					<span class="footer__separator">•</span>
+					<a href="/terms" class="footer__legal-link">Terms of Service</a>
+				</div>
+			</div>
+			<p class="footer__tagline-small text-mono">
+				Engineered with precision. Delivered with excellence.
+			</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: linear-gradient(
+			to bottom,
+			rgba(10, 10, 10, 1) 0%,
+			rgba(5, 5, 5, 1) 100%
+		);
+		border-top: var(--border-hairline) solid rgba(0, 240, 255, 0.2);
+		padding: var(--space-20) 0 var(--space-8);
+		position: relative;
+	}
+	
+	.footer::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			to right,
+			transparent 0%,
+			var(--sonic-electric) 50%,
+			transparent 100%
+		);
+		opacity: 0.3;
+	}
+	
+	.footer__main {
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr 1.5fr;
+		gap: var(--space-12);
+		margin-bottom: var(--space-16);
+	}
+	
+	/* Brand */
+	.footer__brand {
+		max-width: 400px;
+	}
+	
+	.footer__logo {
+		display: inline-block;
+		text-decoration: none;
+		margin-bottom: var(--space-4);
+		transition: transform var(--transition-base) var(--ease-fader);
+	}
+	
+	.footer__logo:hover {
+		transform: translateY(-2px);
+	}
+	
+	.footer__logo-image {
+		height: auto;
+		max-height: 80px;
+		width: auto;
+		object-fit: contain;
+	}
+	
+	.footer__tagline {
+		font-family: var(--font-body);
+		font-size: var(--text-body);
+		font-weight: 600;
+		color: var(--lucid-gold);
+		margin-bottom: var(--space-4);
+	}
+	
+	.footer__description {
+		font-size: var(--text-body);
+		line-height: var(--leading-body);
+		color: var(--white-60);
+		margin-bottom: var(--space-6);
+	}
+	
+	.footer__social {
+		display: flex;
+		gap: var(--space-4);
+	}
+	
+	.footer__social-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border: var(--border-hairline) solid rgba(112, 112, 112, 0.3);
+		border-radius: 50%;
+		color: var(--white-60);
+		transition: all var(--transition-base) var(--ease-fader);
+	}
+	
+	.footer__social-link:hover {
+		color: var(--sonic-electric);
+		border-color: var(--sonic-electric);
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-glow);
+	}
+	
+	/* Columns */
+	.footer__column {
+		/* Column styles */
+	}
+	
+	.footer__heading {
+		font-family: var(--font-display);
+		font-size: 1.125rem;
+		color: var(--white);
+		margin-bottom: var(--space-6);
+		letter-spacing: var(--tracking-normal);
+	}
+	
+	.footer__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+	
+	.footer__link {
+		font-size: var(--text-body);
+		color: var(--white-60);
+		text-decoration: none;
+		transition: color var(--transition-base) var(--ease-fader),
+		            padding-left var(--transition-base) var(--ease-fader);
+		display: inline-block;
+	}
+	
+	.footer__link:hover {
+		color: var(--sonic-electric);
+		padding-left: var(--space-2);
+	}
+	
+	.footer__address {
+		font-size: var(--text-body);
+		color: var(--white-60);
+		line-height: var(--leading-body);
+	}
+	
+	/* Footer Bottom */
+	.footer__bottom {
+		padding-top: var(--space-8);
+		border-top: var(--border-hairline) solid rgba(112, 112, 112, 0.2);
+	}
+	
+	.footer__bottom-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: var(--space-4);
+	}
+	
+	.footer__copyright {
+		font-size: var(--text-mono);
+		color: var(--slate-grey);
+	}
+	
+	.footer__legal {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
+	}
+	
+	.footer__legal-link {
+		font-size: var(--text-mono);
+		color: var(--slate-grey);
+		text-decoration: none;
+		transition: color var(--transition-base) var(--ease-fader);
+	}
+	
+	.footer__legal-link:hover {
+		color: var(--sonic-electric);
+	}
+	
+	.footer__separator {
+		color: var(--slate-grey);
+		opacity: 0.5;
+	}
+	
+	.footer__tagline-small {
+		text-align: center;
+		color: var(--slate-grey);
+		font-size: var(--text-micro);
+	}
+	
+	/* Responsive */
+	@media (max-width: 1024px) {
+		.footer__main {
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--space-8);
+		}
+		
+		.footer__brand {
+			grid-column: 1 / -1;
+			max-width: 100%;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.footer__main {
+			grid-template-columns: 1fr;
+		}
+		
+		.footer__bottom-content {
+			flex-direction: column;
+			gap: var(--space-4);
+			text-align: center;
+		}
+	}
+</style>
