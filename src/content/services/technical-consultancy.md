@@ -1,6 +1,5 @@
 ---
 title: "Equipment Setup & Technical Consultancy"
-slug: "technical-consultancy"
 category: "Technical"
 description: "Expert audio system setup, configuration, production planning, and technical consultation. Professional guidance for venue installations, event preparation, and production optimization."
 specs:

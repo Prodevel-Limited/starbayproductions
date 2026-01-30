@@ -1,6 +1,5 @@
 ---
 title: "International Production Support"
-slug: "international-support"
 category: "International"
 description: "Global-standard production execution for touring artists, international events, and cross-border productions. Comprehensive support for multi-country event coordination and international technical standards."
 specs:

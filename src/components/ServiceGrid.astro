@@ -22,7 +22,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
 				<ServiceCard
 					client:visible
 					title={service.data.title}
-					slug={service.data.slug}
+					slug={service.slug}
 					description={service.data.description}
 					icon={service.data.icon}
 					specs={service.data.specs}

@@ -1,6 +1,5 @@
 ---
 title: "Audio Engineering & Live Sound Production"
-slug: "audio-engineering"
 category: "Audio"
 description: "Professional front-of-house (FOH) and monitor engineering with crystal-clear sound reinforcement for live events. Expert system tuning, optimization, and precision sound clarity control."
 specs:

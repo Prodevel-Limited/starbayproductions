@@ -1,6 +1,5 @@
 ---
 title: "Corporate Event Production"
-slug: "corporate-events"
 category: "Corporate"
 description: "Sophisticated production management for product launches, brand activations, corporate meetings, award ceremonies, and high-profile business events. Precision execution that reflects your brand excellence."
 specs:

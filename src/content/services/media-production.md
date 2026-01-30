@@ -1,6 +1,5 @@
 ---
 title: "Media & Content Production Support"
-slug: "media-production"
 category: "Media"
 description: "Comprehensive event media and production coordination, including audio support for recordings, live streams, and technical support for digital and broadcast platforms."
 specs:

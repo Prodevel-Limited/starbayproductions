@@ -1,6 +1,5 @@
 ---
 title: "Concerts, Worship & Conference Production"
-slug: "concerts-worship"
 category: "Worship"
 description: "Comprehensive production solutions for live concerts, worship services, revivals, crusades, conferences, summits, and large-scale gatherings. Elevating spiritual and musical experiences through technical excellence."
 specs:
